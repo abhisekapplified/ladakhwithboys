@@ -100,9 +100,9 @@
   .daymini b{color:#fff}
   .chev{margin-left:auto; transition:transform .2s; color:#eaf0fa; font-size:1.1rem}
   .day[open] .chev{transform:rotate(180deg)}
-  .day-body{padding:4px 18px 20px; border-top:1px solid var(--line)}
-  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:14px}
-  .field{background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:12px 14px}
+  .day-body{padding:16px 18px 22px; border-top:1px solid var(--line); position:relative; background-size:cover; background-position:center}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:4px}
+  .field{background:rgba(15,25,46,.80); border:1px solid rgba(120,150,200,.18); border-radius:10px; padding:12px 14px; backdrop-filter:blur(2px)}
   .field h4{font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--accent2); margin:0 0 8px}
   .field ul{margin:.2em 0; padding-left:1.1em} .field li{margin:.18em 0}
   .kv{display:flex; gap:8px; font-size:.9rem; margin:.2em 0} .kv .k{color:var(--muted); flex:0 0 120px}
@@ -789,23 +789,6 @@ days.forEach(d=>{
   sb.appendChild(tr);
 });
 
-// ---- gallery builder ----
-function buildGallery(pics, dayN){
-  const g = el("div","gallery");
-  pics.forEach((p,i)=>{
-    const img = el("img");
-    img.src = p.url; img.alt = p.cap; img.loading="lazy";
-    img.dataset.day = dayN; img.dataset.idx = i;
-    img.onerror = function(){
-      const ph = el("div","imgph", "📷<br>"+p.cap+"<br><span style='opacity:.6'>(online only)</span>");
-      this.replaceWith(ph);
-    };
-    img.onclick = ()=>openLB(dayN,i);
-    g.appendChild(img);
-  });
-  return g;
-}
-
 // ---- day cards ----
 const dc = $("#day-cards");
 const badgeHtml = {rush:'<span class="badge b-rush">DEMANDING</span>', mod:'<span class="badge b-rush" style="background:rgba(255,204,77,.18);color:#ffe29a;border-color:#ffcc4d55">MODERATE</span>', easy:'<span class="badge b-easy">RELAXED</span>'};
@@ -895,9 +878,10 @@ days.forEach(d=>{
       <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
         <a class="btn" target="_blank" rel="noopener" href="${gmaps(dayStops[d.n-1])}">🧭 Open Day ${d.n} route in Google Maps</a>
       </div>
-      ${ '<div></div>' }
     </div>`;
-  det.querySelector(".day-body").appendChild(buildGallery(d.pics, d.n));
+  // photo as a soft backdrop behind the whole day plan
+  det.querySelector(".day-body").style.backgroundImage =
+    `linear-gradient(rgba(11,17,30,.86), rgba(11,17,30,.90)), url('${d.pics[0].url}')`;
   dc.appendChild(det);
 });
 
