@@ -81,19 +81,24 @@
   /* ---------- DAY CARDS ---------- */
   .day{margin:14px 0; overflow:hidden}
   .day > summary{
-    list-style:none; cursor:pointer; padding:16px 18px; display:flex; gap:14px; align-items:center;
-    flex-wrap:wrap;
+    list-style:none; cursor:pointer; position:relative; overflow:hidden;
+    min-height:180px; padding:18px; display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;
+    background-size:cover; background-position:center; color:#fff;
+    text-shadow:0 1px 4px rgba(0,0,0,.7);
   }
   .day > summary::-webkit-details-marker{display:none}
-  .day > summary:hover{background:rgba(90,169,255,.05)}
-  .daynum{flex:0 0 auto; width:46px; height:46px; border-radius:12px; display:grid; place-items:center; font-weight:800; font-size:1.1rem;
-    background:linear-gradient(160deg,var(--accent),#ff8a3d); color:#231300}
+  .day > summary::before{content:""; position:absolute; inset:0; transition:background .2s;
+    background:linear-gradient(180deg, rgba(8,13,24,.18) 0%, rgba(8,13,24,.5) 52%, rgba(8,13,24,.93) 100%);}
+  .day > summary:hover::before{background:linear-gradient(180deg, rgba(8,13,24,.1) 0%, rgba(8,13,24,.4) 52%, rgba(8,13,24,.86) 100%);}
+  .day > summary > *{position:relative; z-index:1}
+  .daynum{flex:0 0 auto; width:50px; height:50px; border-radius:12px; display:grid; place-items:center; font-weight:800; font-size:1.15rem;
+    background:linear-gradient(160deg,var(--accent),#ff8a3d); color:#231300; text-shadow:none; box-shadow:0 4px 14px rgba(0,0,0,.4)}
   .dayhead{flex:1 1 240px; min-width:0}
-  .dayhead .t{font-weight:700; font-size:1.05rem}
-  .dayhead .r{color:var(--muted); font-size:.86rem}
-  .daymini{display:flex; gap:14px; flex-wrap:wrap; font-size:.8rem; color:var(--muted)}
-  .daymini b{color:var(--ink)}
-  .chev{margin-left:auto; transition:transform .2s; color:var(--muted)}
+  .dayhead .t{font-weight:800; font-size:1.12rem}
+  .dayhead .r{color:#dbe4f3; font-size:.86rem}
+  .daymini{display:flex; gap:14px; flex-wrap:wrap; font-size:.82rem; color:#d2ddef}
+  .daymini b{color:#fff}
+  .chev{margin-left:auto; transition:transform .2s; color:#eaf0fa; font-size:1.1rem}
   .day[open] .chev{transform:rotate(180deg)}
   .day-body{padding:4px 18px 20px; border-top:1px solid var(--line)}
   .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:14px}
@@ -165,9 +170,30 @@
   .footer{border-top:1px solid var(--line); margin-top:40px; padding:26px 0 50px; color:var(--muted); font-size:.85rem}
   .tag{font-size:.7rem;background:var(--chip);border:1px solid var(--line);padding:1px 7px;border-radius:6px;color:var(--muted)}
 
+  @media (max-width:768px){
+    h2{font-size:1.35rem; margin-top:1.4em}
+    .day > summary{min-height:150px; padding:14px}
+    header.hero{padding:40px 0 24px}
+    .grid2{grid-template-columns:1fr}
+    .twocol{grid-template-columns:1fr}
+  }
   @media (max-width:560px){
+    .wrap{padding:0 13px}
     .daymini{display:none}
-    .stat .n{font-size:1.25rem}
+    .stats{grid-template-columns:1fr 1fr}
+    .stat .n{font-size:1.2rem}
+    .day > summary{min-height:128px}
+    .daynum{width:42px; height:42px; font-size:1rem}
+    .dayhead .t{font-size:1rem}
+    nav.toc a{font-size:.78rem; padding:6px 9px}
+    .calc,.calc-out{padding:14px}
+    .calc-out{grid-template-columns:1fr 1fr}
+    .gallery img,.imgph{height:84px; width:118px}
+    #lb .nav{width:40px;height:40px}
+  }
+  @media (max-width:380px){
+    .stats{grid-template-columns:1fr}
+    .calc-out{grid-template-columns:1fr}
   }
   @media print{
     body{background:#fff; color:#000}
@@ -790,7 +816,7 @@ days.forEach(d=>{
   const roadLeg = [...new Set(d.road.map(r=>r[2]))].map(k=>`<span><i class="seg-${k}"></i>${segName[k]}</span>`).join("");
   const c = d.cost;
   det.innerHTML = `
-    <summary>
+    <summary style="background-image:url('${d.pics[0].url}')">
       <div class="daynum">${d.n}</div>
       <div class="dayhead">
         <div class="t">Day ${d.n} · ${d.date} — ${d.title} ${badgeHtml[d.badge]||""}</div>
