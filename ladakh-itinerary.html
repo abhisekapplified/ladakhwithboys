@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ladakh 9-Day Self-Drive Circuit · 26 Sep – 4 Oct · Delhi → Manali → Leh → Shimla → Delhi</title>
+<style>
+  :root{
+    --bg:#0e1726; --bg2:#13203a; --panel:#16223c; --panel2:#1c2c4d;
+    --ink:#e9eef7; --muted:#a9b6cc; --line:#2a3a5c;
+    --accent:#ffb24d; --accent2:#4fd1c5; --sky:#5aa9ff;
+    --good:#37c871; --warn:#ffcc4d; --bad:#ff6b6b;
+    --chip:#21345c; --radius:14px;
+    --maxw:1100px;
+    --shadow:0 8px 30px rgba(0,0,0,.35);
+    font-synthesis-weight:none;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:
+      radial-gradient(1200px 600px at 80% -10%, #1d3563 0%, transparent 60%),
+      radial-gradient(900px 500px at -10% 10%, #18305a 0%, transparent 55%),
+      var(--bg);
+    color:var(--ink);
+    font:16px/1.6 "Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+  }
+  a{color:var(--sky)}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 18px}
+  h1,h2,h3,h4{line-height:1.2; margin:0 0 .4em}
+  h2{font-size:1.6rem; margin-top:1.8em; display:flex; align-items:center; gap:.5rem}
+  h2 .ico{font-size:1.4rem}
+  .sub{color:var(--muted)}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative; overflow:hidden; padding:54px 0 30px;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg, rgba(20,33,60,.2), rgba(14,23,38,.0));
+  }
+  .hero .kicker{letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:700; font-size:.78rem}
+  .hero h1{font-size:clamp(1.7rem,4.4vw,3rem); margin-top:.25em}
+  .hero h1 .grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .meta-row{display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 6px}
+  .pill{background:var(--chip); border:1px solid var(--line); border-radius:999px; padding:6px 14px; font-size:.85rem; color:var(--ink)}
+  .pill b{color:var(--accent2)}
+  .stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-top:22px}
+  .stat{background:linear-gradient(160deg,var(--panel),var(--panel2)); border:1px solid var(--line); border-radius:var(--radius); padding:14px 16px; box-shadow:var(--shadow)}
+  .stat .n{font-size:1.5rem; font-weight:800; color:var(--accent)}
+  .stat .l{font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.05em}
+
+  nav.toc{position:sticky; top:0; z-index:30; background:rgba(14,23,38,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+  nav.toc .wrap{display:flex; gap:6px; overflow-x:auto; padding:10px 18px}
+  nav.toc a{white-space:nowrap; font-size:.82rem; color:var(--muted); text-decoration:none; padding:6px 11px; border-radius:8px}
+  nav.toc a:hover{background:var(--chip); color:var(--ink)}
+
+  section{padding:6px 0 8px}
+  .card{background:linear-gradient(160deg,var(--panel),#16223c); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+
+  /* ---------- CALLOUT ---------- */
+  .callout{border-left:5px solid var(--warn); padding:16px 18px; margin:14px 0; border-radius:10px; background:rgba(255,204,77,.08)}
+  .callout.danger{border-color:var(--bad); background:rgba(255,107,107,.08)}
+  .callout.ok{border-color:var(--good); background:rgba(55,200,113,.08)}
+  .callout h3{margin-top:0}
+  .badge{display:inline-block; font-size:.72rem; font-weight:700; padding:2px 8px; border-radius:6px; vertical-align:middle}
+  .b-rush{background:rgba(255,107,107,.2); color:#ffb3b3; border:1px solid #ff6b6b55}
+  .b-easy{background:rgba(55,200,113,.18); color:#9af0bf; border:1px solid #37c87155}
+
+  /* ---------- TABLE ---------- */
+  .tbl-scroll{overflow-x:auto; border-radius:var(--radius); border:1px solid var(--line)}
+  table{border-collapse:collapse; width:100%; min-width:680px; font-size:.9rem}
+  th,td{padding:10px 12px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+  thead th{background:var(--panel2); position:sticky; top:0; color:var(--ink); font-size:.8rem; text-transform:uppercase; letter-spacing:.04em}
+  tbody tr:hover{background:rgba(90,169,255,.06)}
+  .diff{font-weight:800}
+  .d1,.d2,.d3{color:var(--good)} .d4,.d5,.d6{color:var(--warn)} .d7,.d8,.d9,.d10{color:var(--bad)}
+
+  /* ---------- DAY CARDS ---------- */
+  .day{margin:14px 0; overflow:hidden}
+  .day > summary{
+    list-style:none; cursor:pointer; padding:16px 18px; display:flex; gap:14px; align-items:center;
+    flex-wrap:wrap;
+  }
+  .day > summary::-webkit-details-marker{display:none}
+  .day > summary:hover{background:rgba(90,169,255,.05)}
+  .daynum{flex:0 0 auto; width:46px; height:46px; border-radius:12px; display:grid; place-items:center; font-weight:800; font-size:1.1rem;
+    background:linear-gradient(160deg,var(--accent),#ff8a3d); color:#231300}
+  .dayhead{flex:1 1 240px; min-width:0}
+  .dayhead .t{font-weight:700; font-size:1.05rem}
+  .dayhead .r{color:var(--muted); font-size:.86rem}
+  .daymini{display:flex; gap:14px; flex-wrap:wrap; font-size:.8rem; color:var(--muted)}
+  .daymini b{color:var(--ink)}
+  .chev{margin-left:auto; transition:transform .2s; color:var(--muted)}
+  .day[open] .chev{transform:rotate(180deg)}
+  .day-body{padding:4px 18px 20px; border-top:1px solid var(--line)}
+  .grid2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:14px}
+  .field{background:var(--bg2); border:1px solid var(--line); border-radius:10px; padding:12px 14px}
+  .field h4{font-size:.82rem; text-transform:uppercase; letter-spacing:.05em; color:var(--accent2); margin:0 0 8px}
+  .field ul{margin:.2em 0; padding-left:1.1em} .field li{margin:.18em 0}
+  .kv{display:flex; gap:8px; font-size:.9rem; margin:.2em 0} .kv .k{color:var(--muted); flex:0 0 120px}
+  .roadbar{display:flex; height:10px; border-radius:6px; overflow:hidden; margin:6px 0 4px; border:1px solid var(--line)}
+  .roadbar span{display:block}
+  .seg-exc{background:#37c871}.seg-good{background:#7bd389}.seg-grav{background:#ffcc4d}.seg-brk{background:#ff8a3d}.seg-off{background:#ff6b6b}
+  .legend{display:flex; gap:12px; flex-wrap:wrap; font-size:.74rem; color:var(--muted); margin-top:4px}
+  .legend i{display:inline-block; width:11px;height:11px;border-radius:3px; margin-right:4px; vertical-align:middle}
+  .btn{display:inline-flex; gap:7px; align-items:center; background:var(--accent2); color:#04231f; text-decoration:none; font-weight:700; padding:9px 14px; border-radius:9px; font-size:.85rem; border:none; cursor:pointer}
+  .btn.sky{background:var(--sky); color:#021a36}
+  .btn:hover{filter:brightness(1.08)}
+  .amschip{font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:6px}
+  .ams-low{background:rgba(55,200,113,.18);color:#9af0bf}.ams-mod{background:rgba(255,204,77,.18);color:#ffe29a}.ams-high{background:rgba(255,107,107,.2);color:#ffb3b3}
+
+  /* gallery */
+  .gallery{display:flex; gap:8px; overflow-x:auto; padding:4px 0; margin-top:12px}
+  .gallery img{height:96px; width:140px; object-fit:cover; border-radius:9px; border:1px solid var(--line); cursor:pointer; background:var(--panel2); flex:0 0 auto; transition:transform .15s}
+  .gallery img:hover{transform:scale(1.04)}
+  .imgph{height:96px;width:140px;border-radius:9px;border:1px dashed var(--line);display:grid;place-items:center;color:var(--muted);font-size:.7rem;text-align:center;flex:0 0 auto;background:var(--panel2);padding:6px}
+
+  /* lightbox */
+  #lb{position:fixed; inset:0; background:rgba(4,8,16,.92); display:none; place-items:center; z-index:100}
+  #lb.on{display:grid}
+  #lb img{max-width:92vw; max-height:80vh; border-radius:12px; box-shadow:var(--shadow)}
+  #lb .cap{color:var(--ink); text-align:center; margin-top:10px; font-size:.9rem}
+  #lb .x,#lb .nav{position:absolute; background:rgba(255,255,255,.1); border:1px solid var(--line); color:#fff; width:46px;height:46px;border-radius:50%; font-size:1.4rem; cursor:pointer; display:grid;place-items:center}
+  #lb .x{top:18px; right:18px}
+  #lb .prev{left:14px; top:50%; transform:translateY(-50%)}
+  #lb .next{right:14px; top:50%; transform:translateY(-50%)}
+
+  /* cost calculator */
+  .calc{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; padding:18px}
+  .calc label{display:block; font-size:.78rem; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:5px}
+  .calc input{width:100%; background:var(--bg); border:1px solid var(--line); color:var(--ink); border-radius:9px; padding:10px 12px; font-size:1rem}
+  .calc input:focus{outline:2px solid var(--accent2)}
+  .calc-out{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; padding:0 18px 18px}
+  .ostat{background:var(--bg2); border:1px solid var(--line); border-radius:11px; padding:14px}
+  .ostat .n{font-size:1.4rem; font-weight:800; color:var(--accent)}
+  .ostat .l{font-size:.76rem; color:var(--muted)}
+  .ostat.big .n{color:var(--accent2)}
+
+  /* checklist */
+  .checkcols{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px}
+  .checkbox-list{background:var(--bg2); border:1px solid var(--line); border-radius:11px; padding:14px}
+  .checkbox-list h4{margin:0 0 8px; color:var(--accent2); font-size:.9rem}
+  .checkbox-list label{display:flex; gap:9px; align-items:flex-start; padding:4px 0; font-size:.9rem; cursor:pointer}
+  .checkbox-list input{margin-top:3px; accent-color:var(--accent2); width:16px;height:16px}
+  .checkbox-list label.done span{text-decoration:line-through; color:var(--muted)}
+
+  .twocol{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px}
+  .infocard{padding:16px 18px}
+  .infocard h3{color:var(--accent); margin-top:0; font-size:1.05rem}
+  .infocard ul{margin:.3em 0; padding-left:1.15em} .infocard li{margin:.25em 0}
+
+  /* pass cards */
+  .passgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px}
+  .pass{padding:16px 18px}
+  .pass h3{margin:0; display:flex; justify-content:space-between; align-items:baseline; gap:8px}
+  .pass .alt{color:var(--accent); font-weight:800; font-size:.95rem; white-space:nowrap}
+  .pass .kv .k{flex:0 0 108px}
+
+  /* svg map */
+  .mapwrap{padding:10px; overflow-x:auto}
+  svg.map{display:block; min-width:760px; width:100%; height:auto}
+  .footer{border-top:1px solid var(--line); margin-top:40px; padding:26px 0 50px; color:var(--muted); font-size:.85rem}
+  .tag{font-size:.7rem;background:var(--chip);border:1px solid var(--line);padding:1px 7px;border-radius:6px;color:var(--muted)}
+
+  @media (max-width:560px){
+    .daymini{display:none}
+    .stat .n{font-size:1.25rem}
+  }
+  @media print{
+    body{background:#fff; color:#000}
+    nav.toc,#lb,.btn,.chev{display:none!important}
+    .day[open] .day-body, .day-body{display:block!important}
+    .day{break-inside:avoid}
+    .card,.field,.stat{box-shadow:none; border-color:#ccc}
+    .gallery{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">Self-Drive Himalayan Expedition · Autumn 2026</div>
+    <h1>Ladakh <span class="grad">Grand Circuit</span><br/>Delhi → Manali → Leh → Shimla → Delhi</h1>
+    <div class="meta-row">
+      <span class="pill">🗓 <b>26 Sep – 4 Oct</b> · 9 Days</span>
+      <span class="pill">🚙 Self-drive <b>SUV</b> (~14 km/l)</span>
+      <span class="pill">👥 <b>5 travelers</b></span>
+      <span class="pill">💰 <b>Mid-range</b></span>
+      <span class="pill">📍 Round-trip from Delhi</span>
+    </div>
+    <p class="sub" style="max-width:760px">A photography-first, comfortable-paced loop up the Manali–Leh
+    highway, the high passes to Nubra &amp; Pangong, and a scenic descent home <b>via Shimla</b>. Built
+    by a Himalayan road-trip planner — with honest road conditions, AMS safety, fuel gaps and live costs.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n" id="s-km">≈2,650 km</div><div class="l">Total distance</div></div>
+      <div class="stat"><div class="n" id="s-hrs">≈78 hrs</div><div class="l">Total driving</div></div>
+      <div class="stat"><div class="n">5,359 m</div><div class="l">Highest pt · Khardung La</div></div>
+      <div class="stat"><div class="n" id="s-fuel">≈189 L</div><div class="l">Fuel (14 km/l)</div></div>
+      <div class="stat"><div class="n" id="s-total">₹—</div><div class="l">Est. total trip</div></div>
+      <div class="stat"><div class="n" id="s-pp">₹—</div><div class="l">Per person (÷5)</div></div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#map">Map</a>
+    <a href="#feasible">Reality Check</a>
+    <a href="#summary">Day Table</a>
+    <a href="#days">Daily Plan</a>
+    <a href="#passes">Passes</a>
+    <a href="#calc">Cost Calc</a>
+    <a href="#safety">Safety</a>
+    <a href="#vehicle">Vehicle</a>
+    <a href="#packing">Packing</a>
+    <a href="#final">Summary</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ============ MAP ============ -->
+  <section id="map">
+    <h2><span class="ico">🗺️</span> The Circuit at a Glance</h2>
+    <p class="sub">Offline schematic of the full loop. Night halts in orange, passes in blue. Per-day Google Maps links are inside each day card and in the final summary.</p>
+    <div class="card mapwrap">
+      <svg class="map" viewBox="0 0 980 360" role="img" aria-label="Ladakh circuit schematic map">
+        <defs>
+          <marker id="arrow" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#5aa9ff"/>
+          </marker>
+          <style>
+            .edge{stroke:#5aa9ff;stroke-width:2.4;fill:none;marker-end:url(#arrow);opacity:.85}
+            .node{fill:#16223c;stroke:#2a3a5c;stroke-width:1.5}
+            .halt{fill:#ffb24d;stroke:#231300;stroke-width:1.5}
+            .lbl{fill:#e9eef7;font:600 12px Segoe UI,sans-serif}
+            .plbl{fill:#9fd0ff;font:600 10.5px Segoe UI,sans-serif}
+            .day{fill:#04231f;font:800 11px Segoe UI,sans-serif}
+          </style>
+        </defs>
+
+        <!-- edges (loop) -->
+        <path class="edge" d="M70,300 C150,300 150,250 235,250"/>            <!-- Delhi-Manali -->
+        <path class="edge" d="M260,242 C300,210 300,160 320,140"/>          <!-- Manali-Jispa -->
+        <path class="edge" d="M345,128 C430,90 500,90 575,108"/>            <!-- Jispa-Leh -->
+        <path class="edge" d="M600,100 C650,75 700,80 730,98"/>             <!-- Leh-Nubra -->
+        <path class="edge" d="M752,112 C820,150 850,180 838,212"/>          <!-- Nubra-Pangong -->
+        <path class="edge" d="M815,222 C740,235 660,170 612,128"/>          <!-- Pangong-Leh -->
+        <path class="edge" d="M578,135 C470,180 380,200 330,205"/>          <!-- Leh-Keylong/Sarchu -->
+        <path class="edge" d="M305,215 C250,245 200,300 150,322"/>          <!-- Keylong-Manali -->
+        <path class="edge" d="M150,322 C170,345 230,345 290,338"/>          <!-- Manali-Shimla -->
+        <path class="edge" d="M300,332 C220,355 140,340 90,318"/>           <!-- Shimla-Delhi -->
+
+        <!-- nodes -->
+        <g>
+          <circle class="halt" cx="60" cy="305" r="11"/><text class="day" x="60" y="309" text-anchor="middle">S/E</text><text class="lbl" x="46" y="334">Delhi</text>
+          <circle class="halt" cx="248" cy="248" r="11"/><text class="day" x="248" y="252" text-anchor="middle">1</text><text class="lbl" x="222" y="232">Manali</text>
+          <circle class="halt" cx="330" cy="132" r="11"/><text class="day" x="330" y="136" text-anchor="middle">2</text><text class="lbl" x="316" y="116">Jispa</text>
+          <text class="plbl" x="280" y="180">Atal Tunnel</text>
+          <circle class="halt" cx="588" cy="112" r="12"/><text class="day" x="588" y="116" text-anchor="middle">3·4</text><text class="lbl" x="572" y="96">Leh</text>
+          <text class="plbl" x="430" y="80">Baralacha · Tanglang La</text>
+          <circle class="halt" cx="742" cy="100" r="11"/><text class="day" x="742" y="104" text-anchor="middle">5</text><text class="lbl" x="714" y="84">Nubra</text>
+          <text class="plbl" x="640" y="66">Khardung La</text>
+          <circle class="halt" cx="832" cy="220" r="11"/><text class="day" x="832" y="224" text-anchor="middle">6</text><text class="lbl" x="806" y="246">Pangong</text>
+          <text class="plbl" x="700" y="200">Shyok road</text>
+          <text class="plbl" x="640" y="150">Chang La (Day 7→Leh)</text>
+          <circle class="halt" cx="316" cy="210" r="11"/><text class="day" x="316" y="214" text-anchor="middle">8</text><text class="lbl" x="300" y="196">Keylong</text>
+          <circle class="halt" cx="298" cy="335" r="11"/><text class="day" x="298" y="339" text-anchor="middle">9</text><text class="lbl" x="300" y="356">Shimla</text>
+        </g>
+      </svg>
+    </div>
+    <div class="legend" style="margin-top:8px">
+      <span><i style="background:#ffb24d"></i>Night halt (day number)</span>
+      <span><i style="background:#5aa9ff"></i>Route direction</span>
+      <span><i style="background:#9fd0ff"></i>Mountain pass</span>
+    </div>
+  </section>
+
+  <!-- ============ FEASIBILITY ============ -->
+  <section id="feasible">
+    <h2><span class="ico">⚖️</span> Expert Reality Check — Is 9 Days Enough?</h2>
+    <div class="callout">
+      <h3>Short answer: the loop fits, but two driving days are genuinely hard, and Shimla pushes the limit.</h3>
+      <p>This is an aggressive-but-doable plan. The <b>acclimatization halt at Jispa (Day 2)</b> and the
+      <b>rest/permit day at Leh (Day 4)</b> are non-negotiable for a group of 5 — skip them and you risk
+      serious AMS. That leaves the return as the squeeze point.</p>
+      <p><b>Most rushed sections:</b></p>
+      <ul>
+        <li><span class="badge b-rush">RUSHED</span> <b>Day 1 — Delhi → Manali (~530 km, 12–13 h).</b> Start by 4:30 AM to beat Delhi/Chandigarh traffic and reach before dark.</li>
+        <li><span class="badge b-rush">RUSHED</span> <b>Day 3 — Jispa → Leh (~330 km, 11–13 h)</b> over four passes. Longest single mountain day; leave by 4:30 AM.</li>
+        <li><span class="badge b-rush">RUSHED</span> <b>Day 9 — Keylong → Manali → Shimla → (Delhi).</b> Keylong→Shimla alone is ~10–11 h. Pushing on to Delhi the same day is unsafe.</li>
+      </ul>
+    </div>
+    <div class="callout ok">
+      <h3>✔ Recommended adjustment (no big time increase)</h3>
+      <p><b>End Day 9 at Shimla</b> and add a relaxed <b>Day 10: Shimla → Delhi (~350 km, 8 h)</b> — the most
+      comfortable, safe version (10 days). If you must finish in 9, take the <b>direct return</b>:
+      Day 9 <i>Keylong → Manali → Delhi</i> and <b>drop Shimla</b> — you cannot safely do Keylong→Shimla→Delhi in one day.
+      Both options are costed below.</p>
+    </div>
+    <div class="callout danger">
+      <h3>✘ Why Hanle &amp; Tso Moriri are excluded</h3>
+      <p>Both lie on a <b>separate southern arm</b> (Leh → Chumathang → Tso Moriri → Hanle), each needing
+      <b>2 extra days</b>, their own long approach, and (for Hanle) a deeper restricted-area permit. Adding
+      either turns this into a 12–13 day trip. They are correctly left out — chase them on a dedicated
+      future run, not bolted onto the Nubra+Pangong+Shimla loop.</p>
+    </div>
+  </section>
+
+  <!-- ============ SUMMARY TABLE ============ -->
+  <section id="summary">
+    <h2><span class="ico">📋</span> Day-Wise Summary</h2>
+    <div class="tbl-scroll">
+      <table>
+        <thead><tr>
+          <th>Day</th><th>Date</th><th>Route</th><th>Dist.</th><th>Drive</th><th>Diff.</th><th>Night halt (alt.)</th>
+        </tr></thead>
+        <tbody id="summary-body"><!-- JS --></tbody>
+      </table>
+    </div>
+    <p class="sub" style="margin-top:8px">Difficulty 1–10 (driving). <span class="d3">green</span>=easy ·
+    <span class="d5">amber</span>=moderate · <span class="d8">red</span>=demanding. Tap any day below for the full brief.</p>
+  </section>
+
+  <!-- ============ DAY CARDS ============ -->
+  <section id="days">
+    <h2><span class="ico">🚗</span> Detailed Daily Plan</h2>
+    <div id="day-cards"><!-- JS --></div>
+  </section>
+
+  <!-- ============ PASSES ============ -->
+  <section id="passes">
+    <h2><span class="ico">⛰️</span> Mountain Pass Reference</h2>
+    <div class="passgrid" id="pass-grid"><!-- JS --></div>
+  </section>
+
+  <!-- ============ COST CALCULATOR ============ -->
+  <section id="calc">
+    <h2><span class="ico">🧮</span> Live Cost Calculator</h2>
+    <p class="sub">Pre-loaded with this itinerary's totals. Change any value to see fuel, total and per-person cost update instantly.</p>
+    <div class="card">
+      <div class="calc">
+        <div><label>Total distance (km)</label><input type="number" id="c-km" value="2650"></div>
+        <div><label>Mileage (km / litre)</label><input type="number" id="c-mil" value="14"></div>
+        <div><label>Fuel price (₹ / litre)</label><input type="number" id="c-fuel" value="100"></div>
+        <div><label>Travelers</label><input type="number" id="c-pax" value="5"></div>
+        <div><label>Hotel ₹ / night (group, 2 rooms)</label><input type="number" id="c-hotel" value="4500"></div>
+        <div><label>Food ₹ / day (group of 5)</label><input type="number" id="c-food" value="3000"></div>
+        <div><label>Nights</label><input type="number" id="c-nights" value="8"></div>
+        <div><label>Tolls + permits + misc (total ₹)</label><input type="number" id="c-misc" value="9000"></div>
+      </div>
+      <div class="calc-out">
+        <div class="ostat"><div class="n" id="o-litres">—</div><div class="l">Litres of fuel</div></div>
+        <div class="ostat"><div class="n" id="o-fuelcost">—</div><div class="l">Fuel cost</div></div>
+        <div class="ostat"><div class="n" id="o-hotel">—</div><div class="l">Hotels</div></div>
+        <div class="ostat"><div class="n" id="o-food">—</div><div class="l">Food</div></div>
+        <div class="ostat big"><div class="n" id="o-total">—</div><div class="l">Total trip cost</div></div>
+        <div class="ostat big"><div class="n" id="o-pp">—</div><div class="l">Per person</div></div>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:8px">Excludes your SUV's rental/EMI &amp; the Delhi-leg highway tolls of the
+    plains, which vary widely. Fuel assumes diesel at ~₹100/L (Sep–Oct 2026 ballpark; Ladakh pumps run pricier).</p>
+  </section>
+
+  <!-- ============ SAFETY ============ -->
+  <section id="safety">
+    <h2><span class="ico">🛡️</span> Safety Guide</h2>
+    <div class="twocol">
+      <div class="card infocard">
+        <h3>Terrain &amp; road hazards</h3>
+        <ul>
+          <li><b>Landslide-prone:</b> Mandi–Manali (NH-3 along Beas), the Gata Loops, Pagal Nala &amp; Zingzingbar near Baralacha, and the Kinnaur/Narkanda stretch on the Shimla return.</li>
+          <li><b>Water crossings (nalas):</b> snow-melt streams near Baralacha &amp; Pagal Nala are highest early afternoon — <b>cross before noon</b>. Whiskey Nala / Shyok crossings on the Nubra–Pangong road.</li>
+          <li><b>Black ice:</b> likely on Khardung La, Chang La &amp; Baralacha in early-morning/late-evening shade by early October — do not brake hard; use low gear.</li>
+          <li><b>Wildlife crossings:</b> blue sheep, marmots &amp; the odd kiang near Pangong/More Plains; livestock on Himachal roads. Honk on blind hairpins.</li>
+        </ul>
+      </div>
+      <div class="card infocard">
+        <h3>Rules, checkpoints &amp; fuel</h3>
+        <ul>
+          <li><b>No driving after sunset</b> in the high country — passes get black ice, no lighting, no help. Always halt before dark (≈18:15 sunset early Oct).</li>
+          <li><b>Inner Line Permits</b> required for Nubra, Pangong &amp; Khardung La — get them on Day 4 in Leh (online + LAHDC office). Carry 6+ photocopies; checkpoints at South Pullu, Khardung village, Tangtse.</li>
+          <li><b>Checkposts:</b> Manali (Atal Tunnel), Sarchu (HP/J&amp;K border, ID check), Upshi, Tangtse. Keep car papers, DL, RC, insurance, PUC handy.</li>
+          <li><b>Emergency fuel:</b> longest dry stretch is <b>Tandi → Leh (~365 km)</b>. Fill at <b>Tandi</b> (last pump before Leh) and carry <b>1×20 L jerrycan</b>. Karu &amp; Diskit have limited fuel.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VEHICLE ============ -->
+  <section id="vehicle">
+    <h2><span class="ico">🔧</span> Vehicle Preparation Checklist</h2>
+    <div class="card infocard">
+      <div class="checkcols" id="vehicle-cols"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ PACKING ============ -->
+  <section id="packing">
+    <h2><span class="ico">🎒</span> Packing Checklist</h2>
+    <div class="card infocard">
+      <div class="checkcols" id="packing-cols"><!-- JS --></div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL ============ -->
+  <section id="final">
+    <h2><span class="ico">🏁</span> Final Summary</h2>
+    <div class="twocol">
+      <div class="card infocard">
+        <h3>Trip totals</h3>
+        <div class="kv"><span class="k">Total distance</span><span>≈ 2,650 km (9-day loop, incl. ~250 km Manali–Shimla)</span></div>
+        <div class="kv"><span class="k">Total driving</span><span>≈ 78 hours over 9 days</span></div>
+        <div class="kv"><span class="k">Highest altitude</span><span>Khardung La — 5,359 m (17,582 ft)</span></div>
+        <div class="kv"><span class="k">Fuel used</span><span>≈ 189 L @ 14 km/l</span></div>
+        <div class="kv"><span class="k">Est. total cost</span><span id="f-total">₹— (see calculator)</span></div>
+        <div class="kv"><span class="k">Per person (÷5)</span><span id="f-pp">₹—</span></div>
+      </div>
+      <div class="card infocard">
+        <h3>📸 Best photography &amp; sunrise/sunset</h3>
+        <ul>
+          <li><b>Sunrise:</b> Pangong Tso, Spangmik shore (colours shift 06:10–07:00); Shanti Stupa, Leh.</li>
+          <li><b>Sunset:</b> Diskit Maitreya Buddha over Nubra dunes; Suraj Tal near Baralacha; Magnetic Hill golden hour.</li>
+          <li><b>Signature frames:</b> Gata Loops switchbacks (21 hairpins), More Plains emptiness, Khardung La summit board, Hunder cold-desert dunes + double-hump camels, Pangong's blue water.</li>
+        </ul>
+      </div>
+      <div class="card infocard">
+        <h3>☕ Recommended cafés &amp; eats</h3>
+        <ul>
+          <li><b>Manali:</b> Café 1947, Johnson's Café, Drifters' Inn.</li>
+          <li><b>Leh:</b> The Tibetan Kitchen, Bon Appétit, Gesmo, Lamayuru Restaurant, Il Forno.</li>
+          <li><b>Highway dhabas:</b> Jispa &amp; Sarchu parachute tents (maggi, dal-rice, thukpa), Pang &amp; Debring tents.</li>
+          <li><b>Shimla:</b> Café Sol, Wake &amp; Bake, Indian Coffee House (heritage).</li>
+        </ul>
+      </div>
+      <div class="card infocard">
+        <h3>🪪 Permits &amp; advance booking</h3>
+        <ul>
+          <li><b>Inner Line Permit</b> (Nubra, Pangong, Khardung La) — arrange Day 4 in Leh.</li>
+          <li><b>Book ahead (Sep–Oct is shoulder/peak):</b> Pangong (Spangmik) tents/cottages, Hunder camps, Day-1 Manali stay, Day-9 Shimla hotel.</li>
+          <li>Carry <b>cash</b> — ATMs end at Leh; Nubra/Pangong are largely cash-only.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 style="margin-top:22px">🔗 Per-day Google Maps routes</h3>
+    <div id="maps-links" style="display:flex;flex-wrap:wrap;gap:8px"><!-- JS --></div>
+  </section>
+</main>
+
+<!-- LIGHTBOX -->
+<div id="lb" aria-hidden="true">
+  <button class="x" aria-label="Close">✕</button>
+  <button class="nav prev" aria-label="Previous">‹</button>
+  <button class="nav next" aria-label="Next">›</button>
+  <div>
+    <img id="lb-img" src="" alt="">
+    <div class="cap" id="lb-cap"></div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="wrap">
+    <p><b>Disclaimer.</b> Distances, driving times, road conditions, fuel gaps and prices are best-effort estimates
+    for <b>late September – early October 2026</b> and change constantly with weather, BRO roadwork and landslides.
+    Verify pass status, permit rules and fuel availability locally before each leg. Mountain weather is the boss —
+    if a pass is closed or a nala is in spate, wait or turn back. <span class="tag">Plan v1 · autumn shoulder season</span></p>
+    <p class="sub">Built as a single offline-capable HTML file. Photos load from the web when online; text, tables,
+    day cards, calculator and map work with no signal. Use browser <b>Print → Save as PDF</b> for an offline copy.</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA — single source of truth. Cards, table, costs, maps,
+   gallery all generated from here.
+   ============================================================ */
+const RUPEE = n => "₹" + Math.round(n).toLocaleString("en-IN");
+const gmaps = stops => "https://www.google.com/maps/dir/" + stops.map(encodeURIComponent).join("/");
+
+// img helper: remote URL with graceful offline placeholder
+const PIC = (url, cap) => ({url, cap});
+
+const days = [
+  {
+    n:1, date:"26 Sep", title:"Delhi → Manali", badge:"rush",
+    route:"Delhi → Panipat → Chandigarh → Bilaspur → Mandi → Kullu → Manali",
+    km:530, drivePure:"11–12 h", driveTotal:"~13 h", dep:"04:30 AM", arr:"05:30–06:30 PM",
+    diff:5, haltAlt:2050, halt:"Manali", ams:"low",
+    road:[["Excellent expressway (Delhi–Chandigarh)",35,"exc"],["Good 4-lane to Bilaspur/Mandi",35,"good"],["Mandi–Manali: narrow, hairpins, landslide zone",30,"brk"]],
+    roadNote:"Smooth till Mandi; the Mandi→Manali gorge along the Beas is the slow, twisty part.",
+    fuel:"Pumps everywhere on the plains. Top up at Bilaspur or Mandi. No fuel anxiety today.",
+    longDry:"None worth noting (<60 km gaps).",
+    food:[["Breakfast","Murthal dhabas (paratha) — Delhi exit"],["Lunch","Chandigarh / Swarghat"],["Tea","Sundernagar or Mandi"],["Dinner","Manali — Mall Road"]],
+    places:[["Drive day — minimal stops","—"],["Pandoh Dam viewpoint","10 min"],["Optional: Mandi old temples","20 min"]],
+    stay:{area:"Old Manali / Aleo / Mall Road", budget:"₹1,500–2,500 guesthouse", mid:"₹3,500–5,000 (Manali Heights, The Orchard Greens)", parking:"Free hotel parking common"},
+    amsNote:"Sea-level to 2,050 m — negligible AMS risk. Sleep well; big climb tomorrow.",
+    water:"2–3 L/day from today to pre-hydrate.",
+    network:"Jio/Airtel/Vi/BSNL all 4G strong throughout.",
+    atm:"Plenty — Chandigarh, Mandi, Kullu, Manali.",
+    medical:"Zonal Hospital Mandi; Lady Willingdon Hospital, Manali.",
+    weather:"Day 18–24°C, night 8–12°C. Low rain chance; no snow. Pleasant.",
+    sun:"Sunrise 06:10 · Sunset 18:25",
+    cost:{fuelL:38, hotel:4500, food:3000, toll:1200, misc:800},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Manali_City.jpg/640px-Manali_City.jpg","Manali valley"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Beas_River_Himachal.jpg/640px-Beas_River_Himachal.jpg","Beas river gorge")]
+  },
+  {
+    n:2, date:"27 Sep", title:"Manali → Jispa (acclimatize)", badge:"easy",
+    route:"Manali → Atal Tunnel → Sissu → Tandi → Keylong → Jispa",
+    km:140, drivePure:"4–5 h", driveTotal:"~6 h (relaxed)", dep:"08:00 AM", arr:"01:00–02:00 PM",
+    diff:4, haltAlt:3200, halt:"Jispa", ams:"mod",
+    road:[["Manali–Atal Tunnel approach: good, climbing",30,"good"],["Atal Tunnel: excellent",10,"exc"],["Sissu–Keylong–Jispa: good with rough patches",60,"good"]],
+    roadNote:"Easiest day — deliberately short for acclimatization. Don't rush; gain altitude slowly.",
+    fuel:"Fill FULL at Tandi pump — it is the LAST fuel before Leh (~365 km away). Carry jerrycan from here.",
+    longDry:"Tandi → Leh = ~365 km with no reliable fuel. Today you only pre-stage.",
+    food:[["Breakfast","Manali before start"],["Tea","Sissu waterfall café"],["Lunch","Keylong or Jispa"],["Dinner","Jispa camp/hotel"]],
+    places:[["Atal Tunnel (9.02 km, 3,000 m)","15 min photo"],["Sissu village & waterfall","30–40 min"],["Keylong town / Kardang Monastery","30 min"],["Jispa riverside & Bhaga river","relax"]],
+    stay:{area:"Jispa (riverside)", budget:"₹1,500–2,500 camps", mid:"₹3,500–5,000 (Hotel Ibex, Padma Lodge, Jispa camps)", parking:"Ample open parking"},
+    amsNote:"3,200 m sleeping altitude — first real test. Walk slowly, no alcohol, hydrate hard. Watch for headache.",
+    water:"3–4 L today. Avoid exertion this afternoon.",
+    network:"Jio/Airtel 4G to Keylong (patchy). Jispa weak — BSNL/Airtel intermittent. Last good signal: Keylong.",
+    atm:"SBI/HPSCB ATMs at Keylong (don't rely on them — carry cash).",
+    medical:"Community Health Centre, Keylong (last proper facility before Leh).",
+    weather:"Day 12–18°C, night 2–6°C. Slight snow chance on high ridges; mostly clear.",
+    sun:"Sunrise 06:05 · Sunset 18:25",
+    cost:{fuelL:10, hotel:4000, food:2500, toll:0, misc:500},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Atal_Tunnel_North_Portal.jpg/640px-Atal_Tunnel_North_Portal.jpg","Atal Tunnel portal"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Sissu_Waterfall.jpg/640px-Sissu_Waterfall.jpg","Sissu")]
+  },
+  {
+    n:3, date:"28 Sep", title:"Jispa → Leh (the big one)", badge:"rush",
+    route:"Jispa → Zingzingbar → Baralacha La → Sarchu → Gata Loops → Nakee La → Lachulung La → Pang → More Plains → Tanglang La → Upshi → Leh",
+    km:330, drivePure:"10–11 h", driveTotal:"12–13 h", dep:"04:30 AM", arr:"05:00–06:00 PM",
+    diff:9, haltAlt:3500, halt:"Leh", ams:"high",
+    road:[["Jispa–Baralacha: broken + nalas",25,"brk"],["Sarchu–Gata–Nakee–Lachulung: gravel & patches",30,"grav"],["Pang–More Plains: smooth tableland",20,"exc"],["More–Tanglang–Leh: good with rough bits",25,"good"]],
+    roadNote:"Four passes in one day. Water crossings near Baralacha worst after noon — that's why you leave at dawn.",
+    fuel:"NO fuel all day. You should be running on the Tandi fill + jerrycan. First Leh pumps at Karu/Leh.",
+    longDry:"Entire 330 km is the dry stretch — Tandi→Leh ~365 km total.",
+    food:[["Breakfast","Jispa (packed) / Zingzingbar tent"],["Tea","Sarchu tents"],["Lunch","Pang parachute dhaba"],["Dinner","Leh"]],
+    places:[["Suraj Tal (near Baralacha)","15 min"],["Gata Loops (21 hairpins)","photo stop"],["More Plains","20 min"],["Tanglang La summit","15 min (don't linger — altitude)"]],
+    stay:{area:"Leh — Changspa / Main Bazaar / Fort Road", budget:"₹1,500–2,500 guesthouses", mid:"₹3,500–6,000 (The Grand Dragon, Hotel Ladakh Sarai, Saboo Resort)", parking:"Hotel/Changspa lane parking"},
+    amsNote:"Sleeping at 3,500 m after a day at 5,000+ m passes. HIGH AMS risk tonight. Rest on arrival, no booze, light dinner. Diamox helps if pre-discussed with doctor.",
+    water:"4–5 L today. Sip constantly at the passes.",
+    network:"Dead all day. Signal returns near Upshi/Karu (BSNL/Jio postpaid). Leh: Jio/Airtel/BSNL postpaid only.",
+    atm:"None en route. First ATMs in Leh.",
+    medical:"None en route (army units only in emergency). SNM Hospital, Leh on arrival.",
+    weather:"Passes -2 to 8°C, Leh day 14–20°C, night 3–7°C. Snow possible on Baralacha/Tanglang; wind high at passes.",
+    sun:"Sunrise 06:00 · Sunset 18:20",
+    cost:{fuelL:24, hotel:5000, food:2500, toll:600, misc:1000},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Gata_loops.jpg/640px-Gata_loops.jpg","Gata Loops"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Tanglang_la.jpg/640px-Tanglang_la.jpg","Tanglang La"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Suraj_Tal.jpg/640px-Suraj_Tal.jpg","Suraj Tal")]
+  },
+  {
+    n:4, date:"29 Sep", title:"Leh — Rest, Acclimatize & Permits", badge:"easy",
+    route:"Leh local: Shanti Stupa · Leh Palace · Sangam · Magnetic Hill · Hall of Fame · Gurudwara Pathar Sahib",
+    km:80, drivePure:"2–3 h local", driveTotal:"full day, easy", dep:"09:00 AM", arr:"—",
+    diff:2, haltAlt:3500, halt:"Leh", ams:"mod",
+    road:[["City + smooth highway to Sangam",100,"exc"]],
+    roadNote:"Easy paved roads. Today is for the body to adapt — essential before Khardung La tomorrow.",
+    fuel:"Top up the tank AND the jerrycan in Leh today for the Nubra/Pangong loop.",
+    longDry:"N/A — refuel base.",
+    food:[["Breakfast","Hotel / Changspa café"],["Lunch","Tibetan Kitchen / Bon Appétit"],["Tea","German Bakery, Main Bazaar"],["Dinner","Gesmo / Lamayuru"]],
+    places:[["Shanti Stupa (sunrise/sunset)","45 min"],["Leh Palace + Namgyal hill","1 h"],["Sangam (Indus–Zanskar)","30 min"],["Magnetic Hill","20 min"],["Hall of Fame museum","45 min"],["Apply Inner Line Permit","1 h"]],
+    stay:{area:"Same Leh hotel (2nd night)", budget:"₹1,500–2,500", mid:"₹3,500–6,000", parking:"Hotel"},
+    amsNote:"Still adapting at 3,500 m. Take it slow, finish acclimatizing. Good sleep tonight = safe Khardung La.",
+    water:"4 L. Light activity only.",
+    network:"Jio/Airtel/BSNL postpaid 4G across Leh. Prepaid SIMs DO NOT work in Ladakh — bring a postpaid.",
+    atm:"Many — SBI, J&K Bank, HDFC, Axis on Main Bazaar/Fort Road. WITHDRAW CASH for Nubra/Pangong now.",
+    medical:"SNM Hospital, Leh (district hospital, oxygen available).",
+    weather:"Day 16–21°C, night 4–8°C. Clear, dry, strong UV.",
+    sun:"Sunrise 06:00 · Sunset 18:18",
+    cost:{fuelL:6, hotel:5000, food:2800, toll:0, misc:1600},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Leh_Palace_2010.jpg/640px-Leh_Palace_2010.jpg","Leh Palace"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Shanti_Stupa%2C_Leh.jpg/640px-Shanti_Stupa%2C_Leh.jpg","Shanti Stupa")]
+  },
+  {
+    n:5, date:"30 Sep", title:"Leh → Khardung La → Nubra", badge:"mod",
+    route:"Leh → South Pullu → Khardung La (5,359 m) → North Pullu → Khalsar → Diskit → Hunder",
+    km:120, drivePure:"4–5 h", driveTotal:"~7 h with stops", dep:"07:00 AM", arr:"01:00–02:00 PM",
+    diff:7, haltAlt:3050, halt:"Hunder (Nubra)", ams:"high",
+    road:[["Leh–South Pullu: good",30,"good"],["South Pullu–Khardung La–North Pullu: broken, snow-melt patches",30,"brk"],["North Pullu–Diskit–Hunder: good",40,"good"]],
+    roadNote:"The pass section is rough & can be slushy; cross Khardung La early before melt. ILP checked at South Pullu.",
+    fuel:"Carry enough from Leh. Diskit has a small pump (unreliable) — Leh fill + jerrycan is the safe plan.",
+    longDry:"Leh → Diskit ~115 km with no dependable fuel.",
+    food:[["Breakfast","Leh before start"],["Tea","Khardung La cafeteria (world's-highest tea, brief)"],["Lunch","Diskit / Hunder"],["Dinner","Hunder camp"]],
+    places:[["Khardung La summit","20 min max (5,359 m — don't dawdle)"],["Diskit Monastery + 32 m Maitreya Buddha","1 h"],["Hunder sand dunes + Bactrian camels","1.5 h (sunset gold)"]],
+    stay:{area:"Hunder / Diskit", budget:"₹2,000–3,000 camps", mid:"₹4,000–6,000 (Nubra Organic Retreat, Hunder camps, Sten-Del)", parking:"Camp parking"},
+    amsNote:"You cross 5,359 m then sleep low at 3,050 m (good). Still, Khardung La is extreme altitude — move slowly at the top, no long stops.",
+    water:"4–5 L. Don't over-exert at the pass.",
+    network:"BSNL/Jio postpaid patchy in Diskit/Hunder; mostly OFF. Inform family before leaving Leh.",
+    atm:"NONE in Nubra — cash only. (You withdrew in Leh on Day 4.)",
+    medical:"CHC Diskit (basic). Serious cases → back to Leh.",
+    weather:"Khardung La -3 to 6°C & windy; Nubra day 16–22°C, night 5–9°C. Dunes warm by day. Low rain; pass snow possible.",
+    sun:"Sunrise 06:00 · Sunset 18:15",
+    cost:{fuelL:9, hotel:5000, food:2800, toll:0, misc:700},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Khardung_La_pass.jpg/640px-Khardung_La_pass.jpg","Khardung La"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diskit_Monastery_Buddha.jpg/640px-Diskit_Monastery_Buddha.jpg","Diskit Buddha"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hunder_sand_dunes.jpg/640px-Hunder_sand_dunes.jpg","Hunder dunes")]
+  },
+  {
+    n:6, date:"1 Oct", title:"Nubra → Pangong (Shyok route)", badge:"rush",
+    route:"Hunder → Diskit → Shyok village → Durbuk → Tangtse → Lukung → Spangmik (Pangong Tso)",
+    km:160, drivePure:"6–7 h", driveTotal:"~8 h", dep:"07:00 AM", arr:"02:00–03:00 PM",
+    diff:8, haltAlt:4250, halt:"Pangong (Spangmik)", ams:"high",
+    road:[["Diskit–Shyok village: broken, sandy, water crossings",45,"off"],["Shyok–Durbuk: gravel & patches",30,"grav"],["Durbuk–Tangtse–Spangmik: good",25,"good"]],
+    roadNote:"The Shyok river route is the rough/adventurous link — water crossings & soft sand. Cross nalas before midday. If Shyok road is shut, fallback is Nubra→Leh→Pangong (longer).",
+    fuel:"No fuel between Diskit and Tangtse (small/none). Run on Leh fill + jerrycan. Karu has the nearest real pump.",
+    longDry:"Diskit → Tangtse ~120 km, effectively no fuel.",
+    food:[["Breakfast","Hunder camp"],["Tea/Lunch","Shyok or Durbuk dhaba"],["Snacks","Tangtse"],["Dinner","Pangong camp"]],
+    places:[["Shyok river valley","photo stops"],["Pangong Tso first view (Lukung)","30 min"],["Spangmik shore + 3 Idiots point","sunset"]],
+    stay:{area:"Spangmik / Pangong shore", budget:"₹2,500–3,500 tents", mid:"₹4,500–7,000 (Pangong cottages, luxury camps)", parking:"Camp lot by the lake"},
+    amsNote:"Highest sleeping altitude of the trip — 4,250 m. Real AMS risk. Arrive early, rest, hydrate, light food, NO alcohol. Nights are very cold.",
+    water:"5 L. Watch group members for AMS symptoms tonight.",
+    network:"BSNL postpaid only, very patchy at Spangmik. Largely OFF-GRID. Tell family in advance.",
+    atm:"NONE. Pure cash zone.",
+    medical:"Basic aid at Tangtse Army; nearest hospital is Leh (5–6 h). Carry an oximeter + first-aid.",
+    weather:"Day 8–14°C, night -2 to 3°C (can drop below 0). High wind off the lake; snow possible. Bright but bitter.",
+    sun:"Sunrise 05:55 · Sunset 18:12",
+    cost:{fuelL:12, hotel:5500, food:3000, toll:0, misc:800},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Pangong_Tso_from_Spangmik.jpg/640px-Pangong_Tso_from_Spangmik.jpg","Pangong Tso"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Shyok_River.jpg/640px-Shyok_River.jpg","Shyok valley")]
+  },
+  {
+    n:7, date:"2 Oct", title:"Pangong → Chang La → Leh", badge:"mod",
+    route:"Spangmik → Lukung → Tangtse → Durbuk → Chang La (5,360 m) → Karu → Leh",
+    km:220, drivePure:"6–7 h", driveTotal:"~8 h", dep:"08:00 AM (after sunrise shoot)", arr:"03:00–04:00 PM",
+    diff:7, haltAlt:3500, halt:"Leh", ams:"mod",
+    road:[["Spangmik–Tangtse: good",30,"good"],["Tangtse–Chang La: broken, rough climb",30,"brk"],["Chang La–Karu–Leh: good",40,"good"]],
+    roadNote:"Catch Pangong sunrise first (best light). Chang La can have black ice in shade — cross by late morning.",
+    fuel:"First reliable pump at KARU — fill up there. Refuel fully in Leh for tomorrow's long haul out.",
+    longDry:"Pangong → Karu ~140 km without dependable fuel.",
+    food:[["Breakfast","Pangong camp"],["Tea","Chang La cafeteria (brief)"],["Lunch","Karu / Shey"],["Dinner","Leh"]],
+    places:[["Pangong sunrise","45 min"],["Chang La summit + tea","15 min"],["Optional: Thiksey Monastery","45 min"],["Hemis/Shey if time","45 min"]],
+    stay:{area:"Leh (final Leh night)", budget:"₹1,500–2,500", mid:"₹3,500–6,000", parking:"Hotel"},
+    amsNote:"Descending to 3,500 m — easier night. You're well acclimatized by now.",
+    water:"4 L.",
+    network:"Off until Karu, then Jio/Airtel/BSNL postpaid 4G into Leh.",
+    atm:"None till Leh. Withdraw final cash in Leh tonight for the road home.",
+    medical:"SNM Hospital, Leh.",
+    weather:"Chang La -3 to 5°C; Leh day 15–20°C, night 3–7°C. Snow possible at pass.",
+    sun:"Sunrise 05:55 · Sunset 18:10",
+    cost:{fuelL:16, hotel:5000, food:2800, toll:0, misc:700},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Chang_La_pass.jpg/640px-Chang_La_pass.jpg","Chang La"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Thiksey_Monastery.jpg/640px-Thiksey_Monastery.jpg","Thiksey")]
+  },
+  {
+    n:8, date:"3 Oct", title:"Leh → Sarchu → Keylong", badge:"rush",
+    route:"Leh → Upshi → Tanglang La → More Plains → Pang → Lachulung La → Nakee La → Gata Loops → Sarchu → Baralacha La → Zingzingbar → Jispa → Keylong",
+    km:330, drivePure:"10–11 h", driveTotal:"12–13 h", dep:"04:30 AM", arr:"05:00–06:00 PM",
+    diff:9, haltAlt:3100, halt:"Keylong", ams:"low",
+    road:[["Leh–Tanglang La: good then rough",25,"good"],["More Plains: smooth",20,"exc"],["Pang–Lachulung–Nakee–Gata: gravel/patches",30,"grav"],["Sarchu–Baralacha–Jispa: broken + nalas",25,"brk"]],
+    roadNote:"The big mountain day in reverse. Cross Baralacha nalas before they swell — early start is mandatory.",
+    fuel:"Fill FULL in Leh. No fuel till TANDI (near Keylong). Same 365 km dry stretch in reverse — carry jerrycan.",
+    longDry:"Leh → Tandi ~360 km, no reliable fuel.",
+    food:[["Breakfast","Leh (packed)"],["Tea","Pang tents"],["Lunch","Sarchu parachute dhaba"],["Dinner","Keylong / Jispa"]],
+    places:[["More Plains","photo"],["Gata Loops descent","photo"],["Suraj Tal","15 min"],["(Drive-focused day)","—"]],
+    stay:{area:"Keylong (or Jispa)", budget:"₹1,500–2,500", mid:"₹3,000–5,000 (Hotel Tashi Deleg, Dekyid Keylong)", parking:"Hotel/open"},
+    amsNote:"Descending all day to 3,100 m — AMS risk drops. You'll feel noticeably better breathing.",
+    water:"4 L at altitude.",
+    network:"Off most of the day; returns at Keylong (Jio/Airtel/BSNL patchy).",
+    atm:"None till Keylong (and unreliable there). Carry cash from Leh.",
+    medical:"None en route; CHC Keylong on arrival.",
+    weather:"Passes -2 to 7°C; Keylong day 12–18°C, night 2–6°C. Snow possible on Baralacha/Tanglang; windy.",
+    sun:"Sunrise 06:05 · Sunset 18:15",
+    cost:{fuelL:24, hotel:4000, food:2500, toll:600, misc:900},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/More_plains_Ladakh.jpg/640px-More_plains_Ladakh.jpg","More Plains"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Baralacha_La.jpg/640px-Baralacha_La.jpg","Baralacha La")]
+  },
+  {
+    n:9, date:"4 Oct", title:"Keylong → Manali → Shimla (→ Delhi)", badge:"rush",
+    route:"Keylong → Atal Tunnel → Manali → Kullu → Mandi → Bilaspur → Bhota → Shimla  (then Day 10: Shimla → Delhi)",
+    km:540, drivePure:"13–14 h to Shimla", driveTotal:"recommend HALT at Shimla", dep:"05:00 AM", arr:"Shimla ~06:00–07:00 PM",
+    diff:8, haltAlt:2200, halt:"Shimla (recommended) — not Delhi", ams:"low",
+    road:[["Keylong–Atal Tunnel–Manali: good w/ hairpins",30,"good"],["Manali–Mandi gorge: narrow, landslides",30,"brk"],["Mandi–Bilaspur–Shimla: good, winding",40,"good"]],
+    roadNote:"Longest civilian day. Keylong→Manali ~3.5 h, Manali→Shimla ~7–8 h. Do NOT push to Delhi tonight — black-spot fatigue. Halt Shimla, finish to Delhi on Day 10 (~350 km, 8 h).",
+    fuel:"Plenty from Manali onward. Fill at Tandi/Keylong start, then Manali, Mandi, Bilaspur as needed.",
+    longDry:"Keylong→Manali side fine; only the very start before Tandi/Sissu is sparse.",
+    food:[["Breakfast","Keylong (early)"],["Lunch","Manali / Kullu"],["Tea","Sundernagar / Bilaspur"],["Dinner","Shimla — Mall Road"]],
+    places:[["Atal Tunnel (return)","quick"],["Kullu valley views","photo"],["Shimla Ridge & Mall (if arriving with light)","evening stroll"]],
+    stay:{area:"Shimla — Mall Road / Ridge", budget:"₹2,000–3,000", mid:"₹4,000–6,500 (Clarkes, Combermere, Willow Banks)", parking:"Hotel valet/lift parking (Shimla parking is tight — confirm ahead)"},
+    amsNote:"Back to low altitude — no AMS. Just manage driver fatigue: rotate drivers, frequent breaks.",
+    water:"Normal hydration.",
+    network:"Full 4G all carriers from Manali onward.",
+    atm:"Everywhere from Manali down.",
+    medical:"IGMC Shimla (major hospital); Zonal Hospital Mandi en route.",
+    weather:"Manali 12–18°C, Shimla day 15–22°C, night 8–12°C. Possible light rain in HP hills; no snow.",
+    sun:"Sunrise 06:10 · Sunset 18:15",
+    cost:{fuelL:39, hotel:5000, food:3000, toll:1400, misc:900},
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/The_Ridge%2C_Shimla.jpg/640px-The_Ridge%2C_Shimla.jpg","Shimla Ridge"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Kullu_Valley.jpg/640px-Kullu_Valley.jpg","Kullu valley")]
+  }
+];
+
+/* ---- mapping helpers for Google Maps stops ---- */
+const dayStops = [
+  ["Delhi","Chandigarh","Mandi, Himachal Pradesh","Manali"],
+  ["Manali","Atal Tunnel","Keylong","Jispa"],
+  ["Jispa","Baralacha La","Sarchu","Pang","Tanglang La","Leh"],
+  ["Leh","Magnetic Hill","Sangam Nimmu","Leh"],
+  ["Leh","Khardung La","Diskit","Hunder"],
+  ["Hunder","Shyok","Durbuk","Tangtse","Pangong Tso Spangmik"],
+  ["Pangong Tso","Chang La","Karu","Leh"],
+  ["Leh","Tanglang La","Pang","Sarchu","Baralacha La","Keylong"],
+  ["Keylong","Atal Tunnel","Manali","Mandi","Shimla"]
+];
+
+/* ============================================================
+   PASS DATA
+   ============================================================ */
+const passes = [
+  {name:"Atal Tunnel", alt:"3,000 m", road:"Excellent (engineered tunnel)", best:"Any time — all-weather", risk:"Low; can have queues", snow:"Bypasses Rohtang snow", photo:"North/South portals", time:"~12 min through", day:"Day 2 & 9"},
+  {name:"Rohtang Pass", alt:"3,978 m", road:"Bypassed by Atal Tunnel (only if you detour)", best:"N/A for this route", risk:"Snow/closure-prone — reason the tunnel exists", snow:"High in shoulder season", photo:"Marhi, Rohtang top (detour only)", time:"Skipped", day:"Not used"},
+  {name:"Baralacha La", alt:"4,890 m", road:"Broken + snow-melt nalas", best:"Before noon (low water)", risk:"High — water crossings, snow", snow:"Likely by early Oct", photo:"Suraj Tal, Bharatpur", time:"~1 h to cross zone", day:"Day 3 & 8"},
+  {name:"Nakee La", alt:"4,739 m", road:"Gravel with patches", best:"Midday", risk:"Moderate", snow:"Possible", photo:"Gata Loops below", time:"~30 min", day:"Day 3 & 8"},
+  {name:"Lachulung La", alt:"5,059 m", road:"Gravel/broken", best:"Midday", risk:"Moderate–high (altitude)", snow:"Possible", photo:"Pang gorge", time:"~30 min", day:"Day 3 & 8"},
+  {name:"Tanglang La", alt:"5,328 m", road:"Good, some rough", best:"Late morning", risk:"High altitude, wind", snow:"Possible by Oct", photo:"Summit board, More Plains", time:"~30 min", day:"Day 3 & 8"},
+  {name:"Khardung La", alt:"5,359 m", road:"Broken, slushy at top", best:"Early morning (before melt)", risk:"High — black ice, extreme altitude", snow:"Likely on top", photo:"Summit signboard (highest pt of trip)", time:"~20 min at top max", day:"Day 5"},
+  {name:"Chang La", alt:"5,360 m", road:"Broken climb, smooth top", best:"Late morning (ice gone)", risk:"High — black ice in shade", snow:"Likely", photo:"Summit, prayer flags", time:"~20 min", day:"Day 7"}
+];
+
+/* ============================================================
+   CHECKLISTS
+   ============================================================ */
+const vehicleChecklist = {
+  "Tyres & wheels":["Tyre tread & sidewall condition","Tyre pressure set (carry gauge)","Full-size spare wheel (ideally 2)","Portable air compressor / inflator","Tubeless puncture repair kit"],
+  "Recovery & tools":["Tow rope / snatch strap","Jump starter (battery pack)","Hydraulic jack + wheel spanner","Basic tool kit, duct tape, cable ties","Shovel / traction boards (sand at Nubra)"],
+  "Fluids & engine":["Engine oil level + 1 L spare","Coolant topped up (antifreeze rated)","Brake fluid + full brake check","Windshield washer fluid","Fuel filter clean (high-altitude tune-up)"],
+  "Essentials":["20 L jerrycan (filled at Tandi/Leh)","Torch + spare batteries","Power bank / car charger","Fire extinguisher","Service done before trip"]
+};
+const packingChecklist = {
+  "Warm clothing":["Heavy down/insulated jacket","Thermal base layers (2 sets)","Fleece / mid-layer","Woollen cap, gloves, scarf","Warm socks (4–5 pairs)","Sturdy waterproof shoes"],
+  "Rain & sun gear":["Rain jacket / poncho","UV sunglasses (glare at altitude)","Sunscreen SPF 50+ & lip balm","Wide-brim/cap"],
+  "Medicines":["Diamox (consult doctor) for AMS","Headache/fever, anti-nausea, antacid","Personal prescriptions","ORS sachets, Band-aids, antiseptic","Pulse oximeter"],
+  "Documents":["DL, RC, insurance, PUC","ID proofs + 6+ photocopies (permits)","Permit printouts","Cash (ATMs end at Leh)","Hotel/camp bookings"],
+  "Electronics":["Phone + postpaid SIM (prepaid won't work)","Power banks (2)","Camera + spare batteries + charger","Car phone mount, offline maps downloaded","Headlamp"],
+  "Snacks & supplies":["Dry fruits, energy bars, chocolate","Instant coffee/tea, electrolyte mix","2–3 L water bottles per person","Thermos flask","Wet wipes, hand sanitizer, tissue, trash bags"]
+};
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const $ = s => document.querySelector(s);
+const el = (t,c,h)=>{const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e;};
+const segName = {exc:"Excellent",good:"Good",grav:"Gravel",brk:"Broken",off:"Off-road / water"};
+
+// ---- summary table ----
+const sb = $("#summary-body");
+days.forEach(d=>{
+  const tr = el("tr");
+  tr.innerHTML = `<td><b>${d.n}</b></td><td>${d.date}</td><td>${d.title}<br><span class="sub" style="font-size:.78rem">${d.route}</span></td>
+    <td>${d.km} km</td><td>${d.drivePure}</td><td class="diff d${d.diff}">${d.diff}/10</td><td>${d.halt} (${d.haltAlt} m)</td>`;
+  sb.appendChild(tr);
+});
+
+// ---- gallery builder ----
+function buildGallery(pics, dayN){
+  const g = el("div","gallery");
+  pics.forEach((p,i)=>{
+    const img = el("img");
+    img.src = p.url; img.alt = p.cap; img.loading="lazy";
+    img.dataset.day = dayN; img.dataset.idx = i;
+    img.onerror = function(){
+      const ph = el("div","imgph", "📷<br>"+p.cap+"<br><span style='opacity:.6'>(online only)</span>");
+      this.replaceWith(ph);
+    };
+    img.onclick = ()=>openLB(dayN,i);
+    g.appendChild(img);
+  });
+  return g;
+}
+
+// ---- day cards ----
+const dc = $("#day-cards");
+const badgeHtml = {rush:'<span class="badge b-rush">DEMANDING</span>', mod:'<span class="badge b-rush" style="background:rgba(255,204,77,.18);color:#ffe29a;border-color:#ffcc4d55">MODERATE</span>', easy:'<span class="badge b-easy">RELAXED</span>'};
+days.forEach(d=>{
+  const det = el("details","card day");
+  if(d.n===1) det.open = true;
+  const roadBar = d.road.map(r=>`<span class="seg-${r[2]}" style="width:${r[1]}%"></span>`).join("");
+  const roadLeg = [...new Set(d.road.map(r=>r[2]))].map(k=>`<span><i class="seg-${k}"></i>${segName[k]}</span>`).join("");
+  const c = d.cost;
+  det.innerHTML = `
+    <summary>
+      <div class="daynum">${d.n}</div>
+      <div class="dayhead">
+        <div class="t">Day ${d.n} · ${d.date} — ${d.title} ${badgeHtml[d.badge]||""}</div>
+        <div class="r">${d.route}</div>
+      </div>
+      <div class="daymini">
+        <span><b>${d.km}</b> km</span><span><b>${d.drivePure}</b> drive</span>
+        <span>Diff <b class="d${d.diff}">${d.diff}/10</b></span><span><b>${d.haltAlt}</b> m halt</span>
+      </div>
+      <span class="chev">▾</span>
+    </summary>
+    <div class="day-body">
+      <div class="grid2">
+        <div class="field">
+          <h4>⏱ Timing & distance</h4>
+          <div class="kv"><span class="k">Distance</span><span>${d.km} km</span></div>
+          <div class="kv"><span class="k">Pure driving</span><span>${d.drivePure}</span></div>
+          <div class="kv"><span class="k">Total w/ breaks</span><span>${d.driveTotal}</span></div>
+          <div class="kv"><span class="k">Depart</span><span>${d.dep}</span></div>
+          <div class="kv"><span class="k">Arrive</span><span>${d.arr}</span></div>
+          <div class="kv"><span class="k">Sun</span><span>${d.sun}</span></div>
+        </div>
+        <div class="field">
+          <h4>🛣 Road condition · Difficulty ${d.diff}/10</h4>
+          <div class="roadbar">${roadBar}</div>
+          <div class="legend">${roadLeg}</div>
+          <ul>${d.road.map(r=>`<li>${r[0]}</li>`).join("")}</ul>
+          <p class="sub" style="font-size:.85rem;margin:.4em 0 0">${d.roadNote}</p>
+        </div>
+        <div class="field">
+          <h4>⛽ Fuel planning</h4>
+          <p style="margin:.2em 0">${d.fuel}</p>
+          <div class="kv"><span class="k">Longest dry</span><span>${d.longDry}</span></div>
+        </div>
+        <div class="field">
+          <h4>🍽 Food stops</h4>
+          <ul>${d.food.map(f=>`<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>
+        </div>
+        <div class="field">
+          <h4>📍 Places to visit</h4>
+          <ul>${d.places.map(p=>`<li>${p[0]} <span class="tag">${p[1]}</span></li>`).join("")}</ul>
+        </div>
+        <div class="field">
+          <h4>🏨 Accommodation</h4>
+          <div class="kv"><span class="k">Best area</span><span>${d.stay.area}</span></div>
+          <div class="kv"><span class="k">Budget</span><span>${d.stay.budget}</span></div>
+          <div class="kv"><span class="k">Mid-range</span><span>${d.stay.mid}</span></div>
+          <div class="kv"><span class="k">Parking</span><span>${d.stay.parking}</span></div>
+        </div>
+        <div class="field">
+          <h4>🫁 Altitude & AMS <span class="amschip ams-${d.ams}">${d.ams.toUpperCase()} risk</span></h4>
+          <div class="kv"><span class="k">Night halt</span><span>${d.halt} — ${d.haltAlt} m</span></div>
+          <p style="margin:.3em 0">${d.amsNote}</p>
+          <div class="kv"><span class="k">Water</span><span>${d.water}</span></div>
+        </div>
+        <div class="field">
+          <h4>📶 Network · 🏧 ATM · 🏥 Medical</h4>
+          <div class="kv"><span class="k">Network</span><span>${d.network}</span></div>
+          <div class="kv"><span class="k">ATM</span><span>${d.atm}</span></div>
+          <div class="kv"><span class="k">Medical</span><span>${d.medical}</span></div>
+        </div>
+        <div class="field">
+          <h4>🌤 Weather (late Sep–early Oct)</h4>
+          <p style="margin:.2em 0">${d.weather}</p>
+        </div>
+        <div class="field">
+          <h4>💸 Day cost (group of 5)</h4>
+          <div class="kv"><span class="k">Fuel</span><span>${c.fuelL} L · <span data-fuel="${c.fuelL}">${RUPEE(c.fuelL*100)}</span></span></div>
+          <div class="kv"><span class="k">Hotel</span><span>${RUPEE(c.hotel)}</span></div>
+          <div class="kv"><span class="k">Food</span><span>${RUPEE(c.food)}</span></div>
+          <div class="kv"><span class="k">Tolls</span><span>${RUPEE(c.toll)}</span></div>
+          <div class="kv"><span class="k">Misc</span><span>${RUPEE(c.misc)}</span></div>
+          <div class="kv"><span class="k"><b>Day total</b></span><span><b>${RUPEE(c.fuelL*100+c.hotel+c.food+c.toll+c.misc)}</b></span></div>
+        </div>
+      </div>
+      <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
+        <a class="btn" target="_blank" rel="noopener" href="${gmaps(dayStops[d.n-1])}">🧭 Open Day ${d.n} route in Google Maps</a>
+      </div>
+      ${ '<div></div>' }
+    </div>`;
+  det.querySelector(".day-body").appendChild(buildGallery(d.pics, d.n));
+  dc.appendChild(det);
+});
+
+// ---- passes ----
+const pg = $("#pass-grid");
+passes.forEach(p=>{
+  const card = el("div","card pass");
+  card.innerHTML = `
+    <h3><span>${p.name}</span><span class="alt">${p.alt}</span></h3>
+    <div class="kv"><span class="k">Road</span><span>${p.road}</span></div>
+    <div class="kv"><span class="k">Best time</span><span>${p.best}</span></div>
+    <div class="kv"><span class="k">Weather risk</span><span>${p.risk}</span></div>
+    <div class="kv"><span class="k">Snowfall</span><span>${p.snow}</span></div>
+    <div class="kv"><span class="k">Photo</span><span>${p.photo}</span></div>
+    <div class="kv"><span class="k">Cross time</span><span>${p.time}</span></div>
+    <div class="kv"><span class="k">On</span><span>${p.day}</span></div>`;
+  pg.appendChild(card);
+});
+
+// ---- checklists ----
+function renderChecklist(container, data){
+  const wrap = $(container);
+  Object.entries(data).forEach(([cat,items])=>{
+    const box = el("div","checkbox-list");
+    box.innerHTML = `<h4>${cat}</h4>`;
+    items.forEach(it=>{
+      const lab = el("label");
+      lab.innerHTML = `<input type="checkbox"><span>${it}</span>`;
+      lab.querySelector("input").addEventListener("change",e=>{
+        lab.classList.toggle("done", e.target.checked);
+      });
+      box.appendChild(lab);
+    });
+    wrap.appendChild(box);
+  });
+}
+renderChecklist("#vehicle-cols", vehicleChecklist);
+renderChecklist("#packing-cols", packingChecklist);
+
+// ---- maps links footer ----
+const ml = $("#maps-links");
+days.forEach(d=>{
+  const a = el("a","btn sky"); a.target="_blank"; a.rel="noopener";
+  a.href = gmaps(dayStops[d.n-1]); a.textContent = `Day ${d.n}: ${d.title}`;
+  ml.appendChild(a);
+});
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+const lb = $("#lb"), lbImg = $("#lb-img"), lbCap = $("#lb-cap");
+let curDay=1, curIdx=0, curPics=[];
+function openLB(dayN, idx){
+  const d = days.find(x=>x.n===dayN); if(!d) return;
+  curPics = d.pics; curDay=dayN; curIdx=idx;
+  showLB();
+  lb.classList.add("on"); lb.setAttribute("aria-hidden","false");
+}
+function showLB(){
+  const p = curPics[curIdx]; if(!p) return;
+  lbImg.src = p.url; lbImg.alt = p.cap;
+  lbCap.textContent = `Day ${curDay} — ${p.cap}  (${curIdx+1}/${curPics.length})`;
+}
+function closeLB(){ lb.classList.remove("on"); lb.setAttribute("aria-hidden","true"); lbImg.src=""; }
+function step(dir){ curIdx=(curIdx+dir+curPics.length)%curPics.length; showLB(); }
+lb.querySelector(".x").onclick = closeLB;
+lb.querySelector(".prev").onclick = ()=>step(-1);
+lb.querySelector(".next").onclick = ()=>step(1);
+lb.onclick = e=>{ if(e.target===lb) closeLB(); };
+document.addEventListener("keydown", e=>{
+  if(!lb.classList.contains("on")) return;
+  if(e.key==="Escape") closeLB();
+  if(e.key==="ArrowLeft") step(-1);
+  if(e.key==="ArrowRight") step(1);
+});
+
+/* ============================================================
+   COST CALCULATOR
+   ============================================================ */
+const ids = ["c-km","c-mil","c-fuel","c-pax","c-hotel","c-food","c-nights","c-misc"];
+const val = id => parseFloat($("#"+id).value)||0;
+function calc(){
+  const km=val("c-km"), mil=val("c-mil"), fuelP=val("c-fuel"), pax=Math.max(1,val("c-pax"));
+  const hotel=val("c-hotel"), food=val("c-food"), nights=val("c-nights"), misc=val("c-misc");
+  const litres = mil>0 ? km/mil : 0;
+  const fuelCost = litres*fuelP;
+  const hotelTot = hotel*nights;
+  const foodTot = food*(nights+1);          // meals across all days
+  const total = fuelCost + hotelTot + foodTot + misc;
+  const pp = total/pax;
+  $("#o-litres").textContent = Math.round(litres)+" L";
+  $("#o-fuelcost").textContent = RUPEE(fuelCost);
+  $("#o-hotel").textContent = RUPEE(hotelTot);
+  $("#o-food").textContent = RUPEE(foodTot);
+  $("#o-total").textContent = RUPEE(total);
+  $("#o-pp").textContent = RUPEE(pp);
+  // hero + final mirrors
+  $("#s-total").textContent = RUPEE(total);
+  $("#s-pp").textContent = RUPEE(pp);
+  $("#s-fuel").textContent = "≈"+Math.round(litres)+" L";
+  $("#f-total").textContent = RUPEE(total);
+  $("#f-pp").textContent = RUPEE(pp);
+}
+ids.forEach(id=>$("#"+id).addEventListener("input",calc));
+calc();
+</script>
+</body>
+</html>
