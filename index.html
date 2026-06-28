@@ -36,7 +36,10 @@
   header.hero{
     position:relative; overflow:hidden; padding:54px 0 30px;
     border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg, rgba(20,33,60,.2), rgba(14,23,38,.0));
+    background:
+      linear-gradient(180deg, rgba(14,23,38,.72), rgba(14,23,38,.92)),
+      url("https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pangong_Tso%2C_Ladakh%2C_India.tif/lossy-page1-960px-Pangong_Tso%2C_Ladakh%2C_India.tif.jpg");
+    background-size:cover; background-position:center 35%;
   }
   .hero .kicker{letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:700; font-size:.78rem}
   .hero h1{font-size:clamp(1.7rem,4.4vw,3rem); margin-top:.25em}
@@ -502,8 +505,8 @@ const days = [
     weather:"Day 18–24°C, night 8–12°C. Low rain chance; no snow. Pleasant.",
     sun:"Sunrise 06:10 · Sunset 18:25",
     cost:{fuelL:38, hotel:4500, food:3000, toll:1200, misc:800},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Manali_City.jpg/640px-Manali_City.jpg","Manali valley"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Beas_River_Himachal.jpg/640px-Beas_River_Himachal.jpg","Beas river gorge")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Manali_in_winters.png/960px-Manali_in_winters.png","Manali valley"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kullu_Valley%2C_Panoramic_views%2C_India.jpg/960px-Kullu_Valley%2C_Panoramic_views%2C_India.jpg","Kullu valley en route")]
   },
   {
     n:2, date:"27 Sep", title:"Manali → Jispa (acclimatize)", badge:"easy",
@@ -525,8 +528,9 @@ const days = [
     weather:"Day 12–18°C, night 2–6°C. Slight snow chance on high ridges; mostly clear.",
     sun:"Sunrise 06:05 · Sunset 18:25",
     cost:{fuelL:10, hotel:4000, food:2500, toll:0, misc:500},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Atal_Tunnel_North_Portal.jpg/640px-Atal_Tunnel_North_Portal.jpg","Atal Tunnel portal"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Sissu_Waterfall.jpg/640px-Sissu_Waterfall.jpg","Sissu")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Atal_Tunnel_vrtmrgmpksk_%282%29.jpg/960px-Atal_Tunnel_vrtmrgmpksk_%282%29.jpg","Atal Tunnel portal"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bhaga_Jispa_Upstream_Lahaul_Himachal_Oct20_D72_18317.jpg/960px-Bhaga_Jispa_Upstream_Lahaul_Himachal_Oct20_D72_18317.jpg","Bhaga river, Jispa"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Batal%2C_Lahaul_and_Spiti_Dist.%2C_HP%2C_India._Elev._4%2C000m%2C_D35_7121_01.jpg/960px-Batal%2C_Lahaul_and_Spiti_Dist.%2C_HP%2C_India._Elev._4%2C000m%2C_D35_7121_01.jpg","Lahaul landscape")]
   },
   {
     n:3, date:"28 Sep", title:"Jispa → Leh (the big one)", badge:"rush",
@@ -548,9 +552,10 @@ const days = [
     weather:"Passes -2 to 8°C, Leh day 14–20°C, night 3–7°C. Snow possible on Baralacha/Tanglang; wind high at passes.",
     sun:"Sunrise 06:00 · Sunset 18:20",
     cost:{fuelL:24, hotel:5000, food:2500, toll:600, misc:1000},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Gata_loops.jpg/640px-Gata_loops.jpg","Gata Loops"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Tanglang_la.jpg/640px-Tanglang_la.jpg","Tanglang La"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Suraj_Tal.jpg/640px-Suraj_Tal.jpg","Suraj Tal")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Gata_Loops%2CLeh_Manali_Highway.jpg/960px-Gata_Loops%2CLeh_Manali_Highway.jpg","Gata Loops (21 hairpins)"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Baralacha_La_Lahaul_D32_13255.jpg/960px-Baralacha_La_Lahaul_D32_13255.jpg","Baralacha La"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Suraj_Taal%28Lake%29_HP%2CIndia.jpg/960px-Suraj_Taal%28Lake%29_HP%2CIndia.jpg","Suraj Tal"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/More_Plains%2C_Ladakh.jpg/960px-More_Plains%2C_Ladakh.jpg","More Plains")]
   },
   {
     n:4, date:"29 Sep", title:"Leh — Rest, Acclimatize & Permits", badge:"easy",
@@ -572,8 +577,9 @@ const days = [
     weather:"Day 16–21°C, night 4–8°C. Clear, dry, strong UV.",
     sun:"Sunrise 06:00 · Sunset 18:18",
     cost:{fuelL:6, hotel:5000, food:2800, toll:0, misc:1600},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Leh_Palace_2010.jpg/640px-Leh_Palace_2010.jpg","Leh Palace"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Shanti_Stupa%2C_Leh.jpg/640px-Shanti_Stupa%2C_Leh.jpg","Shanti Stupa")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Leh_City_seen_from_Shanti_Stupa.JPG/960px-Leh_City_seen_from_Shanti_Stupa.JPG","Leh city from Shanti Stupa"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Leh_Palace_-_Leh_-_Ladakh_-_View_from_Shanti_Stupa.jpg/960px-Leh_Palace_-_Leh_-_Ladakh_-_View_from_Shanti_Stupa.jpg","Leh Palace"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Ladakh_-_Magnetic_Hill.jpg/960px-Ladakh_-_Magnetic_Hill.jpg","Magnetic Hill")]
   },
   {
     n:5, date:"30 Sep", title:"Leh → Khardung La → Nubra", badge:"mod",
@@ -595,9 +601,9 @@ const days = [
     weather:"Khardung La -3 to 6°C & windy; Nubra day 16–22°C, night 5–9°C. Dunes warm by day. Low rain; pass snow possible.",
     sun:"Sunrise 06:00 · Sunset 18:15",
     cost:{fuelL:9, hotel:5000, food:2800, toll:0, misc:700},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Khardung_La_pass.jpg/640px-Khardung_La_pass.jpg","Khardung La"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Diskit_Monastery_Buddha.jpg/640px-Diskit_Monastery_Buddha.jpg","Diskit Buddha"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Hunder_sand_dunes.jpg/640px-Hunder_sand_dunes.jpg","Hunder dunes")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Khardung_La_%28mountain_pass%29%2C_Ladakh%2C_North_India.jpg/960px-Khardung_La_%28mountain_pass%29%2C_Ladakh%2C_North_India.jpg","Khardung La"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Maitreya_Buddha_Statue_at_Diskit_Monastery.jpg/960px-Maitreya_Buddha_Statue_at_Diskit_Monastery.jpg","Diskit Maitreya Buddha"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/A_Lady_in_White_Dress%2C_Hunder_Sand_Dunes%2C_Nubra_Valley%2C_Ladakh.jpg/960px-A_Lady_in_White_Dress%2C_Hunder_Sand_Dunes%2C_Nubra_Valley%2C_Ladakh.jpg","Hunder sand dunes")]
   },
   {
     n:6, date:"1 Oct", title:"Nubra → Pangong (Shyok route)", badge:"rush",
@@ -619,8 +625,9 @@ const days = [
     weather:"Day 8–14°C, night -2 to 3°C (can drop below 0). High wind off the lake; snow possible. Bright but bitter.",
     sun:"Sunrise 05:55 · Sunset 18:12",
     cost:{fuelL:12, hotel:5500, food:3000, toll:0, misc:800},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Pangong_Tso_from_Spangmik.jpg/640px-Pangong_Tso_from_Spangmik.jpg","Pangong Tso"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Shyok_River.jpg/640px-Shyok_River.jpg","Shyok valley")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/5_Nubra_valley.jpg/960px-5_Nubra_valley.jpg","Nubra valley"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Reflections_-_Shyok_River.jpg/960px-Reflections_-_Shyok_River.jpg","Shyok river"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pangong_Tso%2C_Ladakh%2C_India.tif/lossy-page1-960px-Pangong_Tso%2C_Ladakh%2C_India.tif.jpg","Pangong Tso")]
   },
   {
     n:7, date:"2 Oct", title:"Pangong → Chang La → Leh", badge:"mod",
@@ -642,8 +649,9 @@ const days = [
     weather:"Chang La -3 to 5°C; Leh day 15–20°C, night 3–7°C. Snow possible at pass.",
     sun:"Sunrise 05:55 · Sunset 18:10",
     cost:{fuelL:16, hotel:5000, food:2800, toll:0, misc:700},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Chang_La_pass.jpg/640px-Chang_La_pass.jpg","Chang La"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Thiksey_Monastery.jpg/640px-Thiksey_Monastery.jpg","Thiksey")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Chang_La_Pass_%2828527613381%29.jpg/960px-Chang_La_Pass_%2828527613381%29.jpg","Chang La"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Close_up_of_Maitreya_Buddha_at_Thiksey_Monastery_DSCN6617_1.jpg/960px-Close_up_of_Maitreya_Buddha_at_Thiksey_Monastery_DSCN6617_1.jpg","Thiksey Monastery"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Pangong_Tso%2C_Ladakh%2C_India.tif/lossy-page1-960px-Pangong_Tso%2C_Ladakh%2C_India.tif.jpg","Pangong sunrise")]
   },
   {
     n:8, date:"3 Oct", title:"Leh → Sarchu → Keylong", badge:"rush",
@@ -665,8 +673,9 @@ const days = [
     weather:"Passes -2 to 7°C; Keylong day 12–18°C, night 2–6°C. Snow possible on Baralacha/Tanglang; windy.",
     sun:"Sunrise 06:05 · Sunset 18:15",
     cost:{fuelL:24, hotel:4000, food:2500, toll:600, misc:900},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/More_plains_Ladakh.jpg/640px-More_plains_Ladakh.jpg","More Plains"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Baralacha_La.jpg/640px-Baralacha_La.jpg","Baralacha La")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/More_Plains%2C_Ladakh.jpg/960px-More_Plains%2C_Ladakh.jpg","More Plains"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Gata_Loops%2CLeh_Manali_Highway.jpg/960px-Gata_Loops%2CLeh_Manali_Highway.jpg","Gata Loops descent"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Baralacha_La_Lahaul_D32_13255.jpg/960px-Baralacha_La_Lahaul_D32_13255.jpg","Baralacha La")]
   },
   {
     n:9, date:"4 Oct", title:"Keylong → Manali → Shimla (→ Delhi)", badge:"rush",
@@ -688,8 +697,8 @@ const days = [
     weather:"Manali 12–18°C, Shimla day 15–22°C, night 8–12°C. Possible light rain in HP hills; no snow.",
     sun:"Sunrise 06:10 · Sunset 18:15",
     cost:{fuelL:39, hotel:5000, food:3000, toll:1400, misc:900},
-    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/The_Ridge%2C_Shimla.jpg/640px-The_Ridge%2C_Shimla.jpg","Shimla Ridge"),
-          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Kullu_Valley.jpg/640px-Kullu_Valley.jpg","Kullu valley")]
+    pics:[PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Ridge%2C_Shimla.JPG/960px-Ridge%2C_Shimla.JPG","Shimla Ridge"),
+          PIC("https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kullu_Valley%2C_Panoramic_views%2C_India.jpg/960px-Kullu_Valley%2C_Panoramic_views%2C_India.jpg","Kullu valley")]
   }
 ];
 
