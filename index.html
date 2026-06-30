@@ -283,22 +283,44 @@
           <linearGradient id="mtnMid" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stop-color="#22335c"/><stop offset="1" stop-color="#15233f"/>
           </linearGradient>
+          <linearGradient id="mtnFront" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#172742"/><stop offset="1" stop-color="#0e1a30"/>
+          </linearGradient>
+          <linearGradient id="haze" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1a2c52" stop-opacity="0"/>
+            <stop offset="1" stop-color="#0c1628" stop-opacity="0.65"/>
+          </linearGradient>
+          <radialGradient id="sunrise" cx="0.5" cy="1" r="0.9">
+            <stop offset="0" stop-color="#ff9d5c" stop-opacity="0.30"/>
+            <stop offset="0.5" stop-color="#ff9d5c" stop-opacity="0.08"/>
+            <stop offset="1" stop-color="#ff9d5c" stop-opacity="0"/>
+          </radialGradient>
+          <radialGradient id="aurora" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#4fd1c5" stop-opacity="0.18"/>
+            <stop offset="1" stop-color="#4fd1c5" stop-opacity="0"/>
+          </radialGradient>
           <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="2.6" result="b"/>
             <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
           </filter>
-          <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feDropShadow dx="0" dy="2" stdDeviation="2.4" flood-color="#000" flood-opacity="0.5"/>
+          <filter id="softglow" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="4.5"/>
+          </filter>
+          <filter id="shadow" x="-60%" y="-60%" width="220%" height="220%">
+            <feDropShadow dx="0" dy="2.5" stdDeviation="2.6" flood-color="#000" flood-opacity="0.55"/>
           </filter>
           <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto">
             <path d="M0,0 L6,3 L0,6 Z" fill="#ffd089"/>
           </marker>
           <style>
             .road{fill:none;stroke:url(#route);stroke-width:3.6;stroke-linecap:round;filter:url(#glow);marker-end:url(#arrow)}
-            .flow{fill:none;stroke:#eaf6ff;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:1 15;opacity:.85;animation:flow 1.4s linear infinite}
+            .roadbase{fill:none;stroke:#0a1426;stroke-width:6.4;stroke-linecap:round;opacity:.55}
+            .flow{fill:none;stroke:#eaf6ff;stroke-width:1.5;stroke-linecap:round;stroke-dasharray:1 15;opacity:.9;animation:flow 1.4s linear infinite}
             @keyframes flow{to{stroke-dashoffset:-32}}
-            .pin{filter:url(#shadow)}
+            .pin{filter:url(#shadow);transform-box:fill-box;transform-origin:center;transition:transform .2s ease}
+            .pin:hover{transform:scale(1.18)}
             .pin circle.halt{fill:url(#nodeg);stroke:#fff;stroke-width:1.6}
+            .pin .gloss{fill:#fff;opacity:.4}
             .pin .ring{fill:none;stroke:#ffb24d;stroke-width:1.4;opacity:.5;animation:pulse 2.4s ease-out infinite}
             @keyframes pulse{0%{r:12;opacity:.55}100%{r:22;opacity:0}}
             .lbl{fill:#eef3fb;font:700 12px Segoe UI,sans-serif;paint-order:stroke;stroke:#0c1628;stroke-width:3px;stroke-linejoin:round}
@@ -311,31 +333,59 @@
 
         <!-- backdrop -->
         <rect x="0" y="0" width="980" height="380" rx="14" fill="url(#sky)"/>
+        <ellipse cx="420" cy="120" rx="380" ry="150" fill="url(#aurora)"/>
 
         <!-- sun + glow -->
-        <circle cx="892" cy="58" r="60" fill="url(#sung)"/>
-        <circle cx="892" cy="58" r="20" fill="#ffe49a"/>
+        <circle cx="892" cy="58" r="64" fill="url(#sung)"/>
+        <circle cx="892" cy="58" r="20" fill="#ffe49a" filter="url(#softglow)"/>
+        <circle cx="892" cy="58" r="18" fill="#fff1c4"/>
 
         <!-- stars -->
         <g fill="#cfe0ff">
           <circle class="twinkle" cx="120" cy="48" r="1.6"/><circle class="twinkle" cx="300" cy="70" r="1.3" style="animation-delay:.6s"/>
           <circle class="twinkle" cx="470" cy="40" r="1.5" style="animation-delay:1.1s"/><circle class="twinkle" cx="640" cy="50" r="1.4" style="animation-delay:.3s"/>
           <circle class="twinkle" cx="760" cy="34" r="1.3" style="animation-delay:1.5s"/><circle class="twinkle" cx="210" cy="30" r="1.2" style="animation-delay:.9s"/>
+          <circle class="twinkle" cx="560" cy="62" r="1.1" style="animation-delay:2s"/><circle class="twinkle" cx="400" cy="28" r="1.2" style="animation-delay:1.3s"/>
         </g>
 
-        <!-- mountain ranges -->
-        <path fill="url(#mtnFar)" opacity="0.55"
+        <!-- sunrise rim light over ridge -->
+        <rect x="0" y="200" width="980" height="180" fill="url(#sunrise)"/>
+
+        <!-- mountain ranges (far -> front) -->
+        <path fill="url(#mtnFar)" opacity="0.5"
           d="M0,380 L0,300 L70,250 L130,288 L200,238 L280,284 L360,246 L450,278 L540,242 L640,284 L730,250 L820,286 L900,252 L980,288 L980,380 Z"/>
-        <!-- snow caps -->
         <g fill="#eaf3ff" opacity="0.85">
           <path d="M70,250 L84,266 L56,266 Z"/><path d="M200,238 L216,256 L184,256 Z"/>
           <path d="M360,246 L375,263 L345,263 Z"/><path d="M540,242 L556,260 L524,260 Z"/>
           <path d="M730,250 L745,267 L715,267 Z"/><path d="M900,252 L915,269 L885,269 Z"/>
         </g>
-        <path fill="url(#mtnMid)" opacity="0.85"
+        <!-- snow shadow side -->
+        <g fill="#9fb6d6" opacity="0.5">
+          <path d="M70,250 L84,266 L70,266 Z"/><path d="M200,238 L216,256 L200,256 Z"/>
+          <path d="M540,242 L556,260 L540,260 Z"/><path d="M730,250 L745,267 L730,267 Z"/>
+        </g>
+        <path fill="url(#mtnMid)" opacity="0.9"
           d="M0,380 L0,332 L90,300 L180,330 L270,298 L380,330 L490,302 L600,332 L710,300 L820,330 L920,302 L980,328 L980,380 Z"/>
+        <rect x="0" y="250" width="980" height="130" fill="url(#haze)" opacity="0.5"/>
+        <path fill="url(#mtnFront)"
+          d="M0,380 L0,356 L120,338 L240,358 L360,340 L500,360 L640,342 L780,360 L900,344 L980,358 L980,380 Z"/>
 
-        <!-- routes: glowing road + animated flow overlay -->
+        <!-- hidden continuous loop path for the touring vehicle -->
+        <path id="loop" fill="none" stroke="none"
+          d="M70,300 C150,300 150,250 235,250 C300,210 300,160 330,132
+             C430,90 500,90 588,112 C650,80 700,82 742,100
+             C820,150 850,185 832,220 C740,235 660,170 588,112
+             C470,150 380,200 316,210 C260,250 220,300 298,335
+             C200,360 120,345 70,300 Z"/>
+
+        <!-- routes: dark base + glowing road + animated flow overlay -->
+        <g>
+          <path class="roadbase" d="M70,300 C150,300 150,250 235,250"/><path class="roadbase" d="M260,242 C300,210 300,160 320,140"/>
+          <path class="roadbase" d="M345,128 C430,90 500,90 575,108"/><path class="roadbase" d="M600,100 C650,75 700,80 730,98"/>
+          <path class="roadbase" d="M752,112 C820,150 850,180 838,212"/><path class="roadbase" d="M815,222 C740,235 660,170 612,128"/>
+          <path class="roadbase" d="M578,135 C470,180 380,200 330,205"/><path class="roadbase" d="M305,215 C250,245 200,300 150,322"/>
+          <path class="roadbase" d="M150,322 C170,345 230,345 290,338"/><path class="roadbase" d="M300,332 C220,355 140,340 90,318"/>
+        </g>
         <g>
           <path id="e1" class="road" d="M70,300 C150,300 150,250 235,250"/>
           <path id="e2" class="road" d="M260,242 C300,210 300,160 320,140"/>
@@ -352,6 +402,19 @@
           <use href="#e1" class="flow"/><use href="#e2" class="flow"/><use href="#e3" class="flow"/>
           <use href="#e4" class="flow"/><use href="#e5" class="flow"/><use href="#e6" class="flow"/>
           <use href="#e7" class="flow"/><use href="#e8" class="flow"/><use href="#e9" class="flow"/><use href="#e10" class="flow"/>
+        </g>
+
+        <!-- touring SUV driving the whole circuit -->
+        <g>
+          <ellipse cx="0" cy="7" rx="12" ry="3.5" fill="#000" opacity="0.28"/>
+          <rect x="-12" y="-7.5" width="24" height="15" rx="4.5" fill="#ff5d5d" stroke="#7c1d1d" stroke-width="1.2"/>
+          <rect x="-4" y="-5.5" width="10" height="11" rx="2" fill="#d3ecff"/>
+          <rect x="2" y="-5.5" width="1.6" height="11" fill="#9fc6e8"/>
+          <circle cx="10.5" cy="-4" r="1.5" fill="#fff6c2"/><circle cx="10.5" cy="4" r="1.5" fill="#fff6c2"/>
+          <circle cx="-11" cy="-4.3" r="1.1" fill="#ffd1d1"/><circle cx="-11" cy="4.3" r="1.1" fill="#ffd1d1"/>
+          <animateMotion dur="20s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#loop"/>
+          </animateMotion>
         </g>
 
         <!-- pass markers (mountain glyphs) -->
